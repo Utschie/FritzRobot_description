@@ -1,0 +1,11 @@
+<launch>
+  <!-- 首先定义robot_description这个参数，然后使用xacro包里的xacro程序解析本包里的xacro文件
+  于是参数服务器李有了一个名为robot_description的参数，其类型为string，其解析后的文件以urdf字符串的形式在参数中存储-->
+  
+  <arg name="model" default="$(find xacro)/xacro --inorder '$(find fritzrobot_description)/xacro/mini_mec.xacro'"/>
+  <param name="robot_description" command="$(arg model)" />
+  <!--必须要添加关节状态发布节点-->
+  <node pkg="joint_state_publisher" type="joint_state_publisher" name="joint_state_publisher" />
+  <!-- 必须添加机器人状态发布节点 -->
+  <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher" />
+</launch>
