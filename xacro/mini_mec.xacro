@@ -62,12 +62,12 @@
     </joint>
     </xacro:macro>
     <xacro:macro name="shaft_roll_joint" params="LR FR ROLL SHAFT *origin1 *origin2 *axis">
-    <joint name="${LR}_${FR}_${SHAFT}_joint" type="fixed"><!-- type="continuous"-->
+    <joint name="${LR}_${FR}_${SHAFT}_joint" type="continuous"><!-- type="continuous"-->
         <xacro:insert_block name="origin1"/>
         <parent link="${LR}_${FR}_wheel_link"/>
         <child link="${LR}_${FR}_${SHAFT}_link"/>
     </joint>
-    <joint name="${LR}_${FR}_${ROLL}_joint" type="fixed"><!-- type="continuous"-->
+    <joint name="${LR}_${FR}_${ROLL}_joint" type="continuous"><!-- type="continuous"-->
         <xacro:insert_block name="origin2"/>
         <parent link="${LR}_${FR}_${SHAFT}_link"/>
         <child link="${LR}_${FR}_${ROLL}_link"/>
@@ -80,46 +80,46 @@
       <child link="imu_link"/>
     </joint>
     <xacro:imu prefix="imu"/>
-    <roll_gazebo LR="left" FR="front" ROLL="roll1"/>
-    <roll_gazebo LR="left" FR="front" ROLL="roll2"/>
-    <roll_gazebo LR="left" FR="front" ROLL="roll3"/>
-    <roll_gazebo LR="left" FR="front" ROLL="roll4"/>
-    <roll_gazebo LR="left" FR="front" ROLL="roll5"/>
-    <roll_gazebo LR="left" FR="front" ROLL="roll6"/>
-    <roll_gazebo LR="left" FR="front" ROLL="roll7"/>
-    <roll_gazebo LR="left" FR="front" ROLL="roll8"/>
-    <roll_gazebo LR="left" FR="front" ROLL="roll9"/>
-    <roll_gazebo LR="left" FR="front" ROLL="roll10"/>
-    <roll_gazebo LR="right" FR="front" ROLL="roll1"/>
-    <roll_gazebo LR="right" FR="front" ROLL="roll2"/>
-    <roll_gazebo LR="right" FR="front" ROLL="roll3"/>
-    <roll_gazebo LR="right" FR="front" ROLL="roll4"/>
-    <roll_gazebo LR="right" FR="front" ROLL="roll5"/>
-    <roll_gazebo LR="right" FR="front" ROLL="roll6"/>
-    <roll_gazebo LR="right" FR="front" ROLL="roll7"/>
-    <roll_gazebo LR="right" FR="front" ROLL="roll8"/>
-    <roll_gazebo LR="right" FR="front" ROLL="roll9"/>
-    <roll_gazebo LR="right" FR="front" ROLL="roll10"/>
-    <roll_gazebo LR="left" FR="rear" ROLL="roll1"/>
-    <roll_gazebo LR="left" FR="rear" ROLL="roll2"/>
-    <roll_gazebo LR="left" FR="rear" ROLL="roll3"/>
-    <roll_gazebo LR="left" FR="rear" ROLL="roll4"/>
-    <roll_gazebo LR="left" FR="rear" ROLL="roll5"/>
-    <roll_gazebo LR="left" FR="rear" ROLL="roll6"/>
-    <roll_gazebo LR="left" FR="rear" ROLL="roll7"/>
-    <roll_gazebo LR="left" FR="rear" ROLL="roll8"/>
-    <roll_gazebo LR="left" FR="rear" ROLL="roll9"/>
-    <roll_gazebo LR="left" FR="rear" ROLL="roll10"/>
-    <roll_gazebo LR="right" FR="rear" ROLL="roll1"/>
-    <roll_gazebo LR="right" FR="rear" ROLL="roll2"/>
-    <roll_gazebo LR="right" FR="rear" ROLL="roll3"/>
-    <roll_gazebo LR="right" FR="rear" ROLL="roll4"/>
-    <roll_gazebo LR="right" FR="rear" ROLL="roll5"/>
-    <roll_gazebo LR="right" FR="rear" ROLL="roll6"/>
-    <roll_gazebo LR="right" FR="rear" ROLL="roll7"/>
-    <roll_gazebo LR="right" FR="rear" ROLL="roll8"/>
-    <roll_gazebo LR="right" FR="rear" ROLL="roll9"/>
-    <roll_gazebo LR="right" FR="rear" ROLL="roll10"/>
+    <xacro:roll_gazebo LR="left" FR="front" ROLL="roll1"/>
+    <xacro:roll_gazebo LR="left" FR="front" ROLL="roll2"/>
+    <xacro:roll_gazebo LR="left" FR="front" ROLL="roll3"/>
+    <xacro:roll_gazebo LR="left" FR="front" ROLL="roll4"/>
+    <xacro:roll_gazebo LR="left" FR="front" ROLL="roll5"/>
+    <xacro:roll_gazebo LR="left" FR="front" ROLL="roll6"/>
+    <xacro:roll_gazebo LR="left" FR="front" ROLL="roll7"/>
+    <xacro:roll_gazebo LR="left" FR="front" ROLL="roll8"/>
+    <xacro:roll_gazebo LR="left" FR="front" ROLL="roll9"/>
+    <xacro:roll_gazebo LR="left" FR="front" ROLL="roll10"/>
+    <xacro:roll_gazebo LR="right" FR="front" ROLL="roll1"/>
+    <xacro:roll_gazebo LR="right" FR="front" ROLL="roll2"/>
+    <xacro:roll_gazebo LR="right" FR="front" ROLL="roll3"/>
+    <xacro:roll_gazebo LR="right" FR="front" ROLL="roll4"/>
+    <xacro:roll_gazebo LR="right" FR="front" ROLL="roll5"/>
+    <xacro:roll_gazebo LR="right" FR="front" ROLL="roll6"/>
+    <xacro:roll_gazebo LR="right" FR="front" ROLL="roll7"/>
+    <xacro:roll_gazebo LR="right" FR="front" ROLL="roll8"/>
+    <xacro:roll_gazebo LR="right" FR="front" ROLL="roll9"/>
+    <xacro:roll_gazebo LR="right" FR="front" ROLL="roll10"/>
+    <xacro:roll_gazebo LR="left" FR="rear" ROLL="roll1"/>
+    <xacro:roll_gazebo LR="left" FR="rear" ROLL="roll2"/>
+    <xacro:roll_gazebo LR="left" FR="rear" ROLL="roll3"/>
+    <xacro:roll_gazebo LR="left" FR="rear" ROLL="roll4"/>
+    <xacro:roll_gazebo LR="left" FR="rear" ROLL="roll5"/>
+    <xacro:roll_gazebo LR="left" FR="rear" ROLL="roll6"/>
+    <xacro:roll_gazebo LR="left" FR="rear" ROLL="roll7"/>
+    <xacro:roll_gazebo LR="left" FR="rear" ROLL="roll8"/>
+    <xacro:roll_gazebo LR="left" FR="rear" ROLL="roll9"/>
+    <xacro:roll_gazebo LR="left" FR="rear" ROLL="roll10"/>
+    <xacro:roll_gazebo LR="right" FR="rear" ROLL="roll1"/>
+    <xacro:roll_gazebo LR="right" FR="rear" ROLL="roll2"/>
+    <xacro:roll_gazebo LR="right" FR="rear" ROLL="roll3"/>
+    <xacro:roll_gazebo LR="right" FR="rear" ROLL="roll4"/>
+    <xacro:roll_gazebo LR="right" FR="rear" ROLL="roll5"/>
+    <xacro:roll_gazebo LR="right" FR="rear" ROLL="roll6"/>
+    <xacro:roll_gazebo LR="right" FR="rear" ROLL="roll7"/>
+    <xacro:roll_gazebo LR="right" FR="rear" ROLL="roll8"/>
+    <xacro:roll_gazebo LR="right" FR="rear" ROLL="roll9"/>
+    <xacro:roll_gazebo LR="right" FR="rear" ROLL="roll10"/>
     <xacro:astra_camera prefix="camera"/>
     <xacro:wheel_joint LR="right" FR="front" >
         <origin xyz="${front_wheel_position_x} ${right_front_wheel_position_y} ${wheel_position_z} " rpy="0 0 0"/>
@@ -173,10 +173,10 @@
           iyz="-1.13218887733361E-09"
           izz="4.60060413465442E-06" />
     </xacro:wheel_link>
-    <transmission_choose LR="right" FR="front" />
-    <transmission_choose LR="left"  FR="front" />
-    <transmission_choose LR="right" FR="rear"  />
-    <transmission_choose LR="left"  FR="rear"  />
+    <xacro:transmission_choose LR="right" FR="front" />
+    <xacro:transmission_choose LR="left"  FR="front" />
+    <xacro:transmission_choose LR="right" FR="rear"  />
+    <xacro:transmission_choose LR="left"  FR="rear"  />
     <xacro:rplidar LA="laser"/>
 
     <xacro:shaft_link LR="left"  FR="front" SHAFT="shaft1">

@@ -2,10 +2,40 @@
   <!-- 首先定义robot_description这个参数，然后使用xacro包里的xacro程序解析本包里的xacro文件
   于是参数服务器李有了一个名为robot_description的参数，其类型为string，其解析后的文件以urdf字符串的形式在参数中存储-->
   
-  <arg name="model" default="$(find xacro)/xacro --inorder '$(find fritzrobot_description)/xacro/mini_mec.xacro'"/>
+ 
+  <!-- 设置launch文件的参数 -->
+    <arg name="map" default="cloister_gmapping.yaml" />
+    <arg name="world_name" value="$(find fritzrobot_description)/worlds/cloister.world"/>
+    <arg name="paused" default="false"/>
+    <arg name="use_sim_time" default="true"/>
+    <arg name="gui" default="true"/>
+    <arg name="headless" default="false"/>
+    <arg name="debug" default="false"/>
+    <!--arg name="model" default="$(find xacro)/xacro '$(find fritzrobot_description)/xacro/mini_mec.xacro'"/-->
+    <arg name="model" default="$(find xacro)/xacro '$(find fritzrobot_description)/xacro/mini_4wd/mini_4wd.xacro'"/>
+
+    <!-- 运行gazebo仿真环境 -->
+    <include file="$(find gazebo_ros)/launch/empty_world.launch">
+        <arg name="verbose" value="true" />
+        <arg name="world_name" value="$(arg world_name)" />
+        <arg name="debug" value="$(arg debug)" />
+        <arg name="gui" value="$(arg gui)" />
+        <arg name="paused" value="$(arg paused)"/>
+        <arg name="use_sim_time" value="$(arg use_sim_time)"/>
+        <arg name="headless" value="$(arg headless)"/>
+    </include>
+  <node name="map_server" pkg="map_server" type="map_server" args="$(find fritzrobot_control)/src/nav/maps/$(arg map)"/>
+
   <param name="robot_description" command="$(arg model)" />
   <!--必须要添加关节状态发布节点-->
-  <node pkg="joint_state_publisher" type="joint_state_publisher" name="joint_state_publisher" />
+  <node pkg="joint_state_publisher" type="joint_state_publisher" name="joint_state_publisher" output="screen"/>
   <!-- 必须添加机器人状态发布节点 -->
   <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher" />
+  <!-- 对于虚拟定位，需要设置一个/odom与/map之间的静态坐标变换 -->
+  <node pkg="tf" type="static_transform_publisher" name="map_odom_broadcaster" args="0 0 0 0 0 0 /map /odom 100" />
+  <!-- 在gazebo中加载机器人模型-->
+  <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" args="-urdf -model fritzrobot -param robot_description" />
+  <!--node name="gazebo_odometry" pkg="fritzrobot_control" type="gazebo_odometry"/-->
+  
+
 </launch>
