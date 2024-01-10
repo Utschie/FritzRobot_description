@@ -1,0 +1,4 @@
+<launch>
+  <node pkg="rviz" type="rviz" name="rviz" args="-d $(find fritzrobot_description)/configs/show_robot.rviz" required="true"/>
+
+</launch>
