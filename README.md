@@ -19,7 +19,7 @@ Simulated the LIDAR in gazebo with [`robosense_simulator`](https://github.com/to
 
 The simulation shown below
 
-https://github.com/Utschie/FritzRobot_description/assets/33782458/288423f4-e0bd-438e-a80e-16457b35217d
+https://github.com/Utschie/FritzRobot_description/assets/33782458/c6801214-c6d9-4369-a067-307b7d678f44
 
 ### 2023-12-26 update
 modified the models in gazebo and rviz, fixed the issue of the joint_state_publisher through changed python to v3.8
