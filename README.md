@@ -11,7 +11,11 @@ Simulated the LIDAR in gazebo with [`robosense_simulator`](https://github.com/to
 
 **Notice：**
 
-*The meaning of **collision_range** is how far the laser will be blocked at the nearest distance, which must be larger than the radius of the LIDAR, because the laser is emitted from the center of the LIDAR, so if the **collision_range** is smaller than the radius of the LIDAR, then the laser will be blocked by the LIDAR‘s shell.*
+*The meaning of **collision_range** is how far the laser will be blocked at the nearest distance, which must be larger than the radius of the LIDAR, because the laser is emitted from the center of the LIDAR's body, so if the **collision_range** is smaller than the radius of the LIDAR, then the laser will be blocked by the LIDAR‘s shell.* 
+
+*Also the **collision_range** should preferably not be set too large (preferably not the default value of 0.3m), if the value is set too large then gazebo will not be able to simulate the scenario where the LIDAR is occluded in front of its eyes. For example, in this simulation, the two LIDARs are occluded from each other, which should result in part of the field of view being missing.*
+
+*The ideal value of **collision_range** is just a bit bigger than LIDAR'S radius*
 
 The simulation shown below
 
