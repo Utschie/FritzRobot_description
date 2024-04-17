@@ -43,7 +43,7 @@
     <!-- 在gazebo中加载机器人模型-->
     <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" args="-urdf -model fritzrobot -param robot_description -x $(arg x_pos) -y $(arg y_pos) -z $(arg z_pos) -R $(arg roll) -P $(arg pitch) -Y $(arg yaw)"/>
     <!--node name="gazebo_odometry" pkg="fritzrobot_control" type="gazebo_odometry"/-->
-    <node name="pointcloud_sub" pkg="fritzrobot_control" type="pointcloud_sub"/>
+    <!--node name="pointcloud_sub" pkg="fritzrobot_control" type="pointcloud_sub"/-->
     <node pkg="rviz" type="rviz" name="rviz" args="-d $(find fritzrobot_description)/configs/robot_lidar.rviz" required="true"/>
   
 

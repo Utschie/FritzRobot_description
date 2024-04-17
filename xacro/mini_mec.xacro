@@ -25,7 +25,11 @@
     <!--robosense position-->
     <xacro:property name="robosense_offset_x" value="-0.07" />
     <xacro:property name="robosense_offset_y" value="0.00018237" />
-    <xacro:property name="robosense_offset_z" value="0.082" />
+    <xacro:property name="robosense_offset_z" value="0.083" />
+
+    <xacro:property name="rs_m1p_offset_x" value="0.038632" />
+    <xacro:property name="rs_m1p_offset_y" value="0.00018237" />
+    <xacro:property name="rs_m1p_offset_z" value="0.083" />
 
     <!--camera description-->
     <!--camera position-->
@@ -60,17 +64,18 @@
     <xacro:include filename="$(find fritzrobot_description)/xacro/minimec_transmission.xacro" />
     <xacro:include filename="$(find velodyne_description)/urdf/VLP-16.urdf.xacro"/>
     <xacro:include filename="$(find robosense_description)/urdf/RS-16.urdf.xacro"/>
+    <xacro:include filename="$(find robosense_plugin)/models/RS-M1P.urdf.xacro"/>
     <!--joint name="rplidar_joint" type="fixed">
         <origin xyz="${rplidar_offset_x} ${rplidar_offset_y} ${rplidar_offset_z}" rpy="0 0 0" />
 	<parent link="base_link"/>
 	<child link="laser_link"/>
     </joint-->
     <!-- Attach the camera -->
-    <joint name="camera_frame_joint" type="fixed">
+    <!--joint name="camera_frame_joint" type="fixed">
 	<origin xyz="${camera_offset_x} ${camera_offset_y} ${camera_offset_z}" rpy="0 0 0" />
 	<parent link="base_link"/>
 	<child link="camera_link"/>
-    </joint>
+    </joint-->
     <xacro:macro name="wheel_joint" params="LR FR *origin ">
     <joint name="${LR}_${FR}_wheel_joint" type="continuous"><!-- type="continuous"-->
         <xacro:insert_block name="origin"/>
@@ -139,7 +144,7 @@
     <xacro:roll_gazebo LR="right" FR="rear" ROLL="roll8"/>
     <xacro:roll_gazebo LR="right" FR="rear" ROLL="roll9"/>
     <xacro:roll_gazebo LR="right" FR="rear" ROLL="roll10"/>
-    <xacro:astra_camera prefix="camera"/>
+    <!--xacro:astra_camera prefix="camera"/-->
     <xacro:wheel_joint LR="right" FR="front" >
         <origin xyz="${front_wheel_position_x} ${right_front_wheel_position_y} ${wheel_position_z} " rpy="0 0 0"/>
     </xacro:wheel_joint>
@@ -228,12 +233,15 @@
     
     <!--xacro:rplidar LA="laser"/-->
     <!-- The collision_range should be bigger than the radius of the Lidar-->
-    <xacro:VLP-16 parent="base_link" name="velodyne" topic="/velodyne_points" hz="10" samples="440" collision_range="0.06" gpu="${gpu}">
+    <!--xacro:VLP-16 parent="base_link" name="velodyne" topic="/velodyne_points" hz="10" samples="440" collision_range="0.06" gpu="${gpu}">
     <origin xyz="${velodyne_offset_x} ${velodyne_offset_y} ${velodyne_offset_z}" rpy="0 0 0" />
-    </xacro:VLP-16>
-    <xacro:RS-16 parent="base_link" name="robosense" topic="/rs_points" hz="20" samples="900" collision_range="0.06"  gpu="${gpu}">
+    </xacro:VLP-16-->
+    <!--xacro:RS-16 parent="base_link" name="robosense" topic="/rs_points" hz="20" samples="900" collision_range="0.06"  gpu="${gpu}">
         <origin xyz="${robosense_offset_x} ${robosense_offset_y} ${robosense_offset_z}" rpy="0 0 0" />
-    </xacro:RS-16>
+    </xacro:RS-16-->
+    <xacro:RS-M1P parent="base_link" name="RS-M1P" visualize="true">
+        <origin xyz="${rs_m1p_offset_x} ${rs_m1p_offset_y} ${rs_m1p_offset_z}" rpy="0 0 0" />
+    </xacro:RS-M1P>
 
     <xacro:shaft_link LR="left"  FR="front" SHAFT="shaft1">
         <origin xyz="5.2047E-05 5.6757E-05 -1.8943E-05" rpy="0 0 0"  />
